@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Time Remaining Until Site Launch</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-size: cover; /* Ensure the background image covers the entire background */
+    background-repeat: no-repeat;
+    background-position: center center; /* Ensure the background image is centered both horizontally and vertically */
+    transition: background-image 1s ease;
+    /* Added: set initial background image */
+    background-image: url('https://i.imgur.com/S3IHxoF.jpg');
+    height: 100vh; /* Set the height of the body to match the viewport height */
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+  }
+  #time-remaining {
+    font-size: 24px;
+    margin-top: 50px;
+    color: white;
+  }
+</style>
+</head>
+<body>
+
+<h1>Time Remaining Until Site Launch</h1>
+
+<div id="time-remaining"></div>
+
+<script>
+  // Function to update the time remaining
+  function updateTimeRemaining() {
+    // Set the launch time of the site
+    var launchTime = new Date("August 1, 2024 00:00:00").getTime();
+
+    // Get the current time
+    var currentTime = new Date().getTime();
+
+    // Calculate the time difference
+    var timeRemaining = launchTime - currentTime;
+
+    // Convert milliseconds to seconds, minutes, hours, and days
+    var seconds = Math.floor((timeRemaining / 1000) % 60);
+    var minutes = Math.floor((timeRemaining / (1000 * 60)) % 60);
+    var hours = Math.floor((timeRemaining / (1000 * 60 * 60)) % 24);
+    var days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
+
+    // Display the time remaining until launch
+    document.getElementById("time-remaining").innerHTML = days + " days, " + hours + " hours, " + minutes + " minutes, " + seconds + " seconds";
+  }
+
+  // Call updateTimeRemaining initially to avoid delay in displaying the time remaining
+  updateTimeRemaining();
+
+  // Update the time remaining every second
+  setInterval(updateTimeRemaining, 1000);
+
+  // Function to change background image
+  function changeBackground() {
+    var images = [
+      "url('https://i.imgur.com/S3IHxoF.jpg')",
+      "url('https://i.imgur.com/HZNbht2.jpg')",
+      // Add more image URLs as needed
+    ];
+    var randomIndex = Math.floor(Math.random() * images.length);
+    document.body.style.backgroundImage = images[randomIndex];
+  }
+
+  // Call changeBackground after 10 seconds
+  setTimeout(changeBackground, 10000);
+</script>
+
+</body>
+</html>
