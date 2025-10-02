@@ -1,0 +1,90 @@
+{% extends '_layouts/base.html' %}
+{% set title = 'TrendSphere – Fresh Blogs on Technology, Travel, Health, Finance, Lifestyle' %}
+{% set meta_description = 'TrendSphere publishes fresh blogs daily across Technology, Travel, Health, and Lifestyle. Discover trending stories, tips, and guides for 2025 and beyond.' %}
+
+{% block content %}
+  <!-- Hero Section -->
+  <section class="hero p-5 text-white text-center rounded" style="background: url('https://picsum.photos/1200/500?random=11') center/cover no-repeat;">
+    <div class="container">
+      <h1 class="fw-bold">Fresh Blogs on Technology, Travel, Health, Finance & Lifestyle</h1>
+      <p class="lead">Daily trending stories, tips, and guides curated for 2025.</p>
+      <a href="#recent" class="btn btn-primary btn-lg mt-3">Browse Latest Posts</a>
+    </div>
+  </section>
+
+  <!-- Featured Posts -->
+  <section class="container my-5">
+    <h2 class="section-title text-center">Featured Posts</h2>
+    <div class="row g-4">
+      {% for blog in featured %}
+      <div class="col-md-4">
+        <div class="card post-card shadow-sm">
+          <img src="{{ blog.thumbnail }}" alt="{{ blog.title }}" class="card-img-top" loading="lazy">
+          <div class="card-body">
+            <h3 class="card-title h5">{{ blog.title }}</h3>
+            <p class="card-text">{{ blog.snippet }}</p>
+            <a href="/blogs/{{ blog.filename }}" class="btn btn-outline-primary btn-sm">Read More</a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </section>
+
+  <!-- Category Blocks -->
+  <section class="container my-5">
+    <h2 class="section-title text-center">Explore Categories</h2>
+    <div class="row g-4 text-center">
+      <div class="col-md-2"><a href="/category/technology" class="btn btn-outline-dark w-100">Technology</a></div>
+      <div class="col-md-2"><a href="/category/travel" class="btn btn-outline-dark w-100">Travel</a></div>
+      <div class="col-md-2"><a href="/category/health" class="btn btn-outline-dark w-100">Health</a></div>
+      <div class="col-md-2"><a href="/category/finance" class="btn btn-outline-dark w-100">Finance</a></div>
+      <div class="col-md-2"><a href="/category/lifestyle" class="btn btn-outline-dark w-100">Lifestyle</a></div>
+    </div>
+  </section>
+
+  <!-- Recently Published -->
+  <section id="recent" class="container my-5">
+    <h2 class="section-title text-center">Recently Published</h2>
+    <div class="row g-4">
+      {% for blog in recent %}
+      <div class="col-md-4">
+        <div class="card post-card shadow-sm">
+          <img src="{{ blog.thumbnail }}" alt="{{ blog.title }}" class="card-img-top" loading="lazy">
+          <div class="card-body">
+            <h3 class="card-title h6">{{ blog.title }}</h3>
+            <p class="card-text">{{ blog.snippet }}</p>
+            <a href="/blogs/{{ blog.filename }}" class="btn btn-sm btn-outline-secondary">Read</a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </section>
+
+  <!-- Trending -->
+  <section class="container my-5">
+    <h2 class="section-title text-center">Trending Now</h2>
+    <ul class="list-group list-group-flush shadow-sm">
+      {% for blog in trending %}
+      <li class="list-group-item">
+        <a href="/blogs/{{ blog.filename }}">{{ blog.title }}</a>
+      </li>
+      {% endfor %}
+    </ul>
+  </section>
+
+  <!-- Newsletter -->
+  <section class="newsletter container my-5 text-center">
+    <h2>Stay Updated</h2>
+    <p class="lead">Subscribe and get the latest blogs delivered straight to your inbox.</p>
+    <form class="row g-3 justify-content-center mt-3">
+      <div class="col-md-6">
+        <input type="email" class="form-control form-control-lg" placeholder="Enter your email" required>
+      </div>
+      <div class="col-auto">
+        <button type="submit" class="btn btn-lg btn-primary">Subscribe</button>
+      </div>
+    </form>
+  </section>
+{% endblock %}

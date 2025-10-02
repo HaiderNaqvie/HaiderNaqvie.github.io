@@ -1,0 +1,24 @@
+<meta name="description" content="{{ meta_description or 'Fresh blogs daily across Technology, Travel, Health, Finance, and Lifestyle.' }}">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="{{ og_title or (title if title else SITE_NAME) }}">
+<meta property="og:description" content="{{ og_description or meta_description }}">
+<meta property="og:image" content="{{ og_image or SITE_URL ~ '/static/img/og-default.jpg' }}">
+<meta property="og:type" content="website">
+<meta property="og:url" content="{{ SITE_URL ~ request.path }}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ og_title or (title if title else SITE_NAME) }}">
+<meta name="twitter:description" content="{{ og_description or meta_description }}">
+<meta name="twitter:image" content="{{ og_image or SITE_URL ~ '/static/img/og-default.jpg' }}">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "{{ SITE_NAME }}",
+  "url": "{{ SITE_URL }}",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "{{ SITE_URL }}/search?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
