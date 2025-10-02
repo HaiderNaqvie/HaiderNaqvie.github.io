@@ -1,0 +1,28 @@
+{% extends '_layouts/base.html' %}
+{% block title %}Search · {{ SITE_NAME }}{% endblock %}
+{% block content %}
+<h1 class="mb-4">Search results for "{{ q }}"</h1>
+{% if not q %}
+<p>Enter a search term in the header.</p>
+{% else %}
+  {% if posts %}
+  <div class="row g-4">
+    {% for post in posts %}
+    <div class="col-md-4">
+      <div class="card h-100">
+        {% if post.thumbnail_url %}
+        <img src="{{ post.thumbnail_url }}" class="card-img-top" alt="{{ post.title }}" loading="lazy">
+        {% endif %}
+        <div class="card-body">
+          <h2 class="h5"><a href="/blogs/{{ post.slug }}">{{ post.title }}</a></h2>
+          <p>{{ post.excerpt }}</p>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  {% else %}
+  <p>No results found.</p>
+  {% endif %}
+{% endif %}
+{% endblock %}

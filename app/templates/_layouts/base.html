@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}{{ SITE_NAME }}{% endblock %}</title>
+  {% block meta %}{% include '_partials/_meta.html' %}{% endblock %}
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="icon" href="/static/favicon.ico" type="image/x-icon">
+  <link rel="canonical" href="{{ SITE_URL }}{{ request.path }}">
+  <link rel="stylesheet" href="/static/css/main.css">
+  {% block head_extras %}{% endblock %}
+</head>
+<body>
+  {% include '_partials/_navbar.html' %}
+  <main class="container my-4">
+    {% block content %}{% endblock %}
+  </main>
+  {% include '_partials/_footer.html' %}
+  {% include '_partials/_analytics.html' %}
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="/static/js/consent.js"></script>
+  {% block scripts %}{% endblock %}
+</body>
+</html>

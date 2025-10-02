@@ -1,0 +1,17 @@
+{% extends '_layouts/base.html' %}
+{% block title %}{{ post.seo_title or post.title }} · {{ SITE_NAME }}{% endblock %}
+{% set meta_description = post.seo_description or post.excerpt %}
+{% block content %}
+<article class="container">
+  <header class="mb-4">
+    <h1 class="display-5">{{ post.title }}</h1>
+    <p class="text-muted">{{ post.published_at or post.created_at }}</p>
+    {% if post.thumbnail_url %}
+    <img src="{{ post.thumbnail_url }}" class="img-fluid rounded" alt="{{ post.title }}" loading="lazy">
+    {% endif %}
+  </header>
+  <div class="content">
+    {{ post.content | safe }}
+  </div>
+</article>
+{% endblock %}
